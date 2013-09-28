@@ -759,7 +759,6 @@
   function loadOptions() {
     // if we're not given parameters in the URL
     var options = getUrlParmString();
-    alert('URL PARAMETERS: '+options);
     if (options === '') {
       // Try to load the parameters from local storage
       if (DATA.loadValid('use-custom-url', 0, DATA.int10) === 1) {
@@ -783,11 +782,9 @@
     var isLoadWords = gUrlParms && gUrlParms.words;
     var isLoadList = gUrlParms && gUrlParms.list && gUrlParms.list !== 'custom';
     if (isLoadWords && !isLoadList) {
-      alert('WE GOT THEM WORDS');
       // Manually start with the words provided
       onWordListLoad(gUrlParms.words);
     } else {
-      alert('WTF? loading list');
       var list = 'quick';
       if (gUrlParms && gUrlParms.list) {
         if (gUrlParms.list === "english") {
