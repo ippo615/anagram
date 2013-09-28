@@ -182,6 +182,10 @@
 	</ul>
 	</section>
 
+	<a class='large-button left' id='btn-share-bottom' href='#'>
+		<h2 class='tight'>Share!</h2>
+		Challenge your friends to play the game.
+	</a>
 	<div class='large-button left' id='btn-play-bottom'>
 		<h2 class='tight'>Play!</h2>
 		Start the game with your custom settings
@@ -233,6 +237,8 @@ function makeOutput() {
 
   // Save the data - so it can be retrieved when the puzzle page loads
   DATA.save('url-parm-string', parmString);
+
+  return parmString;
 }
 
 // --------------------------------------------------- [ Module: Form Reset ] -
@@ -334,6 +340,33 @@ function makeOutput() {
     if( navigator && navigator.app && navigator.app.backHistory ){
         navigator.app.backHistory();
     }
+  });
+})($);
+
+// -------------------------------------------------------- [ Module: Share ] -
+(function ($){
+  var oldWindow = null;
+  $('#btn-share-bottom').on('click',function(ev){
+    //ev.preventDefault();
+    var urlParms = makeOutput();
+    var emailBody = '';
+    emailBody += 'Hey,\n';
+    emailBody += '\n';
+    emailBody += 'I though you would enjoy this game:\n';
+    emailBody += '\n';
+    emailBody += 'http://ippo615.github.io/anagram/anagram/index.html?';
+    emailBody += urlParms;
+    emailBody += '\n\n';
+    emailBody += 'You can also get it in the app store:\n\n';
+    emailBody += 'https://play.google.com/store/apps/details?id=com.acipo.anagram';
+    emailBody += '\n\n';
+    emailBody += 'Enjoy!';
+    var mailTo = '';
+    mailTo += 'mailto:';
+    mailTo += '?to=';
+    mailTo += '&subject='+encodeURIComponent('Try this game!');
+    mailTo += '&body='+encodeURIComponent(emailBody);
+    this.href = mailTo;
   });
 })($);
 

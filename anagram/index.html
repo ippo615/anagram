@@ -757,13 +757,16 @@
   }
 
   function loadOptions() {
+    // if we're not given parameters in the URL
     var options = getUrlParmString();
+    alert('URL PARAMETERS: '+options);
     if (options === '') {
+      // Try to load the parameters from local storage
       if (DATA.loadValid('use-custom-url', 0, DATA.int10) === 1) {
         options = DATA.load('url-parm-string', options);
       }
     }
-    var gUrlParms = parseUrlParmString(options);
+    var gUrlParms = parseUrlParmString(options.replace(/\n/g,'').replace(/\r/g/''));
 
     // Try to load URL parameters.
     if (gUrlParms !== null) {
