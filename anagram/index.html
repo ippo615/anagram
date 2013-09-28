@@ -819,8 +819,10 @@
   }
 
   // --------------------------------------------------------------- [ Main ] -
-  loadOptions();
-  setupUi();
+  $(document).ready(function(){
+    loadOptions();
+    setupUi();
+  });
 
 })();
 
