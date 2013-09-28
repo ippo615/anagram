@@ -783,6 +783,7 @@
     var isLoadWords = gUrlParms && gUrlParms.words;
     var isLoadList = gUrlParms && gUrlParms.list && gUrlParms.list !== 'custom';
     if (isLoadWords && !isLoadList) {
+      alert('WE GOT THEM WORDS');
       // Manually start with the words provided
       onWordListLoad(gUrlParms.words);
     } else {
